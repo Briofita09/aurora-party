@@ -126,7 +126,7 @@ export default function Home() {
 
             <div className="flex justify-between items-center">
               <label htmlFor="name">Seu nome:</label>
-              <input type="text" className="bg-yellow-200 rounded-md w-60 text-black p-2" onChange={(e) => setName(e.target.value)} disabled={loading} />
+              <input type="text" className="bg-yellow-200 rounded-md w-60 text-black p-2" value={name} onChange={(e) => setName(e.target.value)} disabled={loading} />
             </div>
             <div className="flex justify-between items-center">
               <label>Número de adultos</label>

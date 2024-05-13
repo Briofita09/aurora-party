@@ -6,6 +6,9 @@ import Image from "next/image";
 import { Button, HStack, Input, List, ListIcon, ListItem, useNumberInput } from "@chakra-ui/react";
 import { Hearts } from 'react-loader-spinner'
 import axios from 'axios'
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 import everest from '@/logos/everest.png'
 import skye from '@/logos/patrulha-canina-skye-11.png'
@@ -51,21 +54,46 @@ export default function Home() {
 
   async function handleSubmit() {
     try {
+      setLoading(true)
       const payload = {
         name,
         kids: kidsValue,
         adults: adultsValue
       }
-      const res = await axios.post('https://aurora-party-back.onrender.com', payload)
-      console.log(res)
+      await axios.post('https://aurora-party-back.onrender.com', payload)
+      toast('🦄 Obrigado por confirmar sua presença!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+      setLoading(false)
     } catch (err) {
       console.log(err)
+      setLoading(false)
+      toast('Ocorreu um erro, entre em contato com os pais!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
-    //setLoading(true)
+
   }
 
   return (
     <main className="bg-pink-300 min-h-screen p-4">
+      <ToastContainer />
       <div className="flex justify-around">
         <div className="flex flex-col justify-center">
           <Image src={everest} alt="everest" height={80} />
@@ -163,7 +191,7 @@ export default function Home() {
           )
       }
 
-      <h3 className="mt-5 text-center font-bold" onClick={() => { setHints(!hints); setThanks(false) }}>{!hints ? "Ideias de presente? Clique aqui!" : "Confirme sua presença clicando aqui!"}</h3>
+      <h3 className="mt-5 text-center font-bold" onClick={() => setHints(!hints)}>{!hints ? "Ideias de presente? Clique aqui!" : "Confirme sua presença clicando aqui!"}</h3>
     </main >
   );
 }

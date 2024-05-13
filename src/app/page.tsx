@@ -5,6 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { Button, HStack, Input, List, ListIcon, ListItem, useNumberInput } from "@chakra-ui/react";
 import { Hearts } from 'react-loader-spinner'
+import axios from 'axios'
 
 import everest from '@/logos/everest.png'
 import skye from '@/logos/patrulha-canina-skye-11.png'
@@ -49,7 +50,18 @@ export default function Home() {
   const kids = getKidsInputProps();
 
   async function handleSubmit() {
-    setLoading(true)
+    try {
+      const payload = {
+        name,
+        kids: kidsValue,
+        adults: adultsValue
+      }
+      const res = await axios.post('https://aurora-party-back.onrender.com', payload)
+      console.log(res)
+    } catch (err) {
+      console.log(err)
+    }
+    //setLoading(true)
   }
 
   return (

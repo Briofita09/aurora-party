@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Convite Aurora",
   description: "Venha para o meu sexto aniversário",
+  icons: 'https://www.canva.com/design/DAGCtosflbE/-YKb_MNFzru4B5MabWWjcA/view'
 };
 
 export default function RootLayout({

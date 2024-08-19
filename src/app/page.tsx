@@ -14,6 +14,10 @@ import everest from '@/logos/everest.png'
 import skye from '@/logos/patrulha-canina-skye-11.png'
 import pawLogo from '@/logos/paw_logo.svg'
 
+import wheel from '../logos/wheel.png'
+import redCar from '../logos/redCar.png'
+import blueCar from '../logos/blueCar.png'
+
 
 
 export default function Home() {
@@ -60,8 +64,8 @@ export default function Home() {
         kids: kidsValue,
         adults: adultsValue
       }
-      await axios.post('https://aurora-party-back.onrender.com', payload)
-      toast('🦄 Obrigado por confirmar sua presença!', {
+      await axios.post('https://bbmgpw53uz.us-east-2.awsapprunner.com', payload)
+      toast('Obrigado por confirmar sua presença!', {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -92,60 +96,62 @@ export default function Home() {
   }
 
   return (
-    <main className="bg-pink-300 min-h-screen p-4">
+    <main
+      className="bg-custom-image bg-cover bg-center min-h-screen p-4"
+    >
       <ToastContainer />
       <div className="flex justify-around">
         <div className="flex flex-col justify-center">
-          <Image src={everest} alt="everest" height={80} />
+          <Image src={redCar} alt="car1" height={80} />
         </div>
         <div>
-          <h1 className="font-bold text-center text-2xl">Aurora</h1>
-          <h2 className="text-center">convida vocês para o seu</h2>
-          <h2 className="text-center">sexto aniversário</h2>
+          <h1 className="font-bold text-center text-2xl text-white">Adam</h1>
+          <h2 className="text-center text-white">convida vocês para o seu</h2>
+          <h2 className="text-center text-white">sexto aniversário</h2>
 
-          <h2 className="text-xl text-center font-bold mt-4">Quando?</h2>
-          <p className="text-center">Sábado, 8 de Junho</p>
+          <h2 className="text-xl text-center font-bold mt-4 text-white">Quando?</h2>
+          <p className="text-center text-white">Sábado, 31 de agosto - 16h</p>
 
-          <h2 className="text-xl text-center font-bold mt-4">Onde?</h2>
-          <p className="text-center">Rua, Fabio Montenegro, 10</p>
+          <h2 className="text-xl text-center font-bold mt-4 text-white">Onde?</h2>
+          <p className="text-center text-white">Av, Doutor Moura Ribeiro, 125 - AcquaPlay</p>
 
         </div>
         <div className="flex flex-col justify-center">
-          <Image src={skye} alt="skye" height={80} />
+          <Image src={blueCar} alt="blue car" height={80} />
         </div>
 
       </div>
 
 
       <div className="w-[90vw] flex items-center mt-2">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3645.893233721446!2d-46.33168368859918!3d-23.964215276427336!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce030f539a7c39%3A0x8f1bdaf5af42e6da!2sR.%20F%C3%A1bio%20Montenegro%2C%2010%20-%20Gonzaga%2C%20Santos%20-%20SP%2C%2011060-475!5e0!3m2!1spt-BR!2sbr!4v1715562587210!5m2!1spt-BR!2sbr" width="100%" height="180" style={{ border: '0px' }} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3646.0864353599554!2d-46.35298812380839!3d-23.957383478529767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce03442c4c4d73%3A0x11f29d3d129d21da!2sAcqua%20Play%20Home%20%26%20Resort!5e0!3m2!1spt-BR!2sbr!4v1724039663604!5m2!1spt-BR!2sbr" width="100%" height="180" style={{ border: '0px' }} loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
       </div>
       {
         !hints ? (
           <form className="mt-4 flex flex-col gap-3">
 
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center text-white">
               <label htmlFor="name">Seu nome:</label>
               <input type="text" className="bg-yellow-200 rounded-md w-60 text-black p-2" value={name} onChange={(e) => setName(e.target.value)} disabled={loading} />
             </div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center text-white">
               <label>Número de adultos</label>
 
               <HStack maxW='140px'>
 
                 <Button {...getAdultsDecrementButtonProps()}>-</Button>
-                <Input {...adults} bgColor='#fff894' variant='filled' />
+                <Input {...adults} bgColor='#fff894' variant='filled' className="text-black" />
                 <Button {...getAdultsIncrementButtonProps()}>+</Button>
               </HStack>
             </div>
 
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center text-white">
               <label>Número de crianças</label>
 
               <HStack maxW='140px'>
 
                 <Button {...getKidsDecrementButtonProps()}>-</Button>
-                <Input {...kids} bgColor='#fff894' variant='filled' />
+                <Input {...kids} bgColor='#fff894' variant='filled' className="text-black" />
                 <Button {...getKidsIncrementButtonProps()}>+</Button>
               </HStack>
             </div>
@@ -167,31 +173,31 @@ export default function Home() {
         ) :
           (
             <List spacing={3} mt={4}>
-              <ListItem className="flex items-center">
-                <ListIcon as={Image} src={pawLogo} boxSize={8} />
-                Aurora calça 27 e veste 6-8
+              <ListItem className="flex items-center text-white">
+                <ListIcon as={Image} src={wheel} boxSize={8} />
+                Adam calça 29 e veste tamanho 6
               </ListItem>
-              <ListItem className="flex items-center">
-                <ListIcon as={Image} src={pawLogo} boxSize={8} />
-                Ama brilho e cores
+              <ListItem className="flex items-center text-white">
+                <ListIcon as={Image} src={wheel} boxSize={8} />
+                Ama meios de transporte
               </ListItem>
-              <ListItem className="flex items-center">
-                <ListIcon as={Image} src={pawLogo} boxSize={8} />
-                Adora roupas, laços e calçados
+              <ListItem className="flex items-center text-white">
+                <ListIcon as={Image} src={wheel} boxSize={8} />
+                Adora heróis, principalmente o homem aranha Miles Morales.
               </ListItem>
-              <ListItem className="flex items-center">
-                <ListIcon as={Image} src={pawLogo} boxSize={8} />
-                Gosta de jogos de tabuleiro e itens de maquiagem/beleza
+              <ListItem className="flex items-center text-white">
+                <ListIcon as={Image} src={wheel} boxSize={8} />
+                Gosta de jogos de tabuleiro (ex.: pizza maluca, Cara a cara…), quebra cabeça, carros, aviões, helicóptero, beyblades e instrumentos musicais (bateria e microfone)
               </ListItem>
-              <ListItem className="flex items-center">
-                <ListIcon as={Image} src={pawLogo} boxSize={8} />
-                Aprecia bichos de pelucia
+              <ListItem className="flex items-center text-white">
+                <ListIcon as={Image} src={wheel} boxSize={8} />
+                Aprecia roupa de time de futebol.
               </ListItem>
             </List>
           )
       }
 
-      <h3 className="mt-5 text-center font-bold" onClick={() => setHints(!hints)}>{!hints ? "Ideias de presente? Clique aqui!" : "Confirme sua presença clicando aqui!"}</h3>
+      <h3 className="mt-5 text-center font-bold text-white" onClick={() => setHints(!hints)}>{!hints ? "Ideias de presente? Clique aqui!" : "Confirme sua presença clicando aqui!"}</h3>
     </main >
   );
 }

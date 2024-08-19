@@ -6,7 +6,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Convite Aurora",
+  title: "Convite Adam",
   description: "Venha para o meu sexto aniversário",
   icons: [
     {

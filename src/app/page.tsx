@@ -64,7 +64,7 @@ export default function Home() {
         kids: kidsValue,
         adults: adultsValue
       }
-      await axios.post('https://aurora-party-back.onrender.com', payload)
+      await axios.post('https://bbmgpw53uz.us-east-2.awsapprunner.com', payload)
       toast('Obrigado por confirmar sua presença!', {
         position: "top-right",
         autoClose: 5000,
